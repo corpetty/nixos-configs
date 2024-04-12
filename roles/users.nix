@@ -3,7 +3,7 @@
 {
 
   # Give extra permissions with Nix
-  nix.settings.trust-users = [ "petty" ];
+  nix.settings.trusted-users = [ "petty" ];
 
   users.groups.petty = {
     gid = 1000;

@@ -27,7 +27,7 @@
 
   # Sensors
   boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
+#  boot.kernelPackages = pkgs.linuxPackages_6_1;
 
   networking = {
     hostName = "rooter";
@@ -67,13 +67,14 @@
   
 
   # Video
+  nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "amdgpu-pro" ];
 
   # Power Management
   powerManagement.cpuFreqGovernor = "performance";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  # system.stateVersion = "20.09";
+  system.stateVersion = "23.11";
 
   systemd.coredump.enable = true;
 
@@ -83,7 +84,8 @@
   ];
 
   # allow video into loopback for OBS
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+#  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
 
   # enable virtualization
   virtualisation.libvirtd.enable = true;

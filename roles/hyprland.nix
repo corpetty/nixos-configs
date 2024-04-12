@@ -17,9 +17,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    alacritty
+    unstable.alacritty
 
-    starship
-    helix
-  ]
+    unstable.starship
+    unstable.helix
+  ];
 }

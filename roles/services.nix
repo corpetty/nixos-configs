@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, channels, ... }:
 
 {
   # Systemd services setup
-  systemd.packages = pkgs; [
+  systemd.packages = with pkgs; [
     auto-cpufreq
   ];
 
@@ -14,7 +14,7 @@
       enable = true;
       packages = with pkgs; [
         xfce.xfconf
-        gnome2.Gconf
+        gnome2.GConf
       ];
     };
     mpd.enable = true;
@@ -34,8 +34,8 @@
     enable = true;
     wlr.enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
+      pkgs.unstable.xdg-desktop-portal-wlr
+      pkgs.unstable.xdg-desktop-portal-gtk
     ];
   };
 
@@ -53,7 +53,7 @@
     slurp
     imagemagick
     swappy
-    ffmeg_6-full
+    ffmpeg_6-full
     wf-recorder
     wl-clipboard
     cliphist
@@ -68,7 +68,7 @@
     dunst
     avizo
     wlogout
-    wpapderd
+    wpaperd
     gifsicle
   ];
 }
