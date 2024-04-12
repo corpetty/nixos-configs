@@ -35,7 +35,7 @@
     wlr.enable = true;
     extraPortals = [
       pkgs.unstable.xdg-desktop-portal-wlr
-      pkgs.unstable.xdg-desktop-portal-gtk
+      # pkgs.unstable.xdg-desktop-portal-gtk
     ];
   };
 

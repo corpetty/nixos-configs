@@ -8,9 +8,50 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.availableKernelModules = [
+    "amdgpu"
+    "nvme" 
+    "xhci_pci" 
+    "thunderbolt" 
+    "usbhid" 
+    "usb_storage"
+    "uas" 
+    "sd_mod"
+    "pci_stub"
+    "vfio"
+    "vfio-pci"
+    "vfio_iommu_type1" 
+  ];
+  boot.initrd.kernelModules = [
+    "vfio"
+    "vfio-pci"
+    # Order matters here, the vfio have to come before the amdgpu
+    # or else the gpu will grab the pci device before it can be
+    # set for vfio-pci passthrough
+    "amdgpu"
+  ];
+  boot.initd.preDeviceCommands = ''
+    DEVS="0000:03:00.0 0000:03:00.1"
+    for DEV in $DEVS; do
+      echo "vfio-=pci" > /sys/bus/pci/devices/$DEV/driver_override
+    done
+    modprobe -i vfio-pci
+  '';
+  boot.kernelModules = [ 
+    "kvm-amd"
+    "pci_stub"
+    "vfio_pci"
+    "vfio"
+    "vfio_iommu_type1"
+    "kvmfr" 
+  ];
+  boot.kernelParams = [
+    "iommu=pt"
+    "amd_iommu=on"
+    "vfio-pci.ids=1002:7480,1002:ab30"
+    "pci-stub.ids=1002:7480,1002:ab30"
+    "mem_sleep_default=deep"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
