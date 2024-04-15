@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, channels, hyprland, ... }:
 
 {
   imports = [
@@ -17,17 +17,8 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 10;
-  };
 
-  # Resume
-  systemd.sleep.extraConfig = "HibernateMode=reboot";
-
-  # Sensors
-  boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-#  boot.kernelPackages = pkgs.linuxPackages_6_1;
+  boot.kernelPackage = pkgs.linuxPackages_6_8;
 
   networking = {
     hostName = "rooter";

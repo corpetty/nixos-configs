@@ -7,9 +7,14 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware }:
+  outputs = { self, nixpkgs, unstable, hyprland, hardware }:
     let
       overlay = final: prev: {
         unstable = import unstable { inherit (prev) system; config.allowUnfree = true; };
@@ -27,7 +32,10 @@
         name = host;
         value = nixpkgs.lib.nixosSystem {
           system = systemForHost host;
-          specialArgs.channels = { inherit nixpkgs unstable hardware; };
+          specialArgs = {
+            inherit hyprland;
+            channels = { inherit nixpkgs unstable hardware; 
+          };
           modules = [ overlayModule ./hosts/${host}/configuration.nix ];
         };
       }) hostnames);
