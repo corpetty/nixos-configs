@@ -34,7 +34,7 @@
           system = systemForHost host;
           specialArgs = {
             inherit hyprland;
-            channels = { inherit nixpkgs unstable hardware; 
+            channels = { inherit nixpkgs unstable hardware; }; 
           };
           modules = [ overlayModule ./hosts/${host}/configuration.nix ];
         };
