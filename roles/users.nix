@@ -19,6 +19,7 @@
     extraGroups = [ 
       "networkmanager" "input" "wheel" "video" "audio" "tss" 
       "dialout" "disk" "adm" "tty" "systemd-journal" "docker"
+      "i2c"`
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
