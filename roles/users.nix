@@ -27,6 +27,7 @@
       discord
       brave
       obsidian
+      (callPackage ../pkgs/wavebox.nix {})
     ];
   };
 

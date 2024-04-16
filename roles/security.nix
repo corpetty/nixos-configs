@@ -8,7 +8,7 @@
     passExtensions.pass-otp
     passExtensions.pass-tomb
     passExtensions.pass-update
-    passExtensions.pass.import
+    passExtensions.pass-import
     tomb
   ];
 }
