@@ -7,6 +7,7 @@
     # disabled because of issues actually getting the hibernation to happen
     # ../custom/suspend-then-hibernate.nix
     ../roles/users.nix
+    ../roles/security.nix
     ../roles/terminal-utils.nix
   ];
 
