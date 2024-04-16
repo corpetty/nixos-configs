@@ -1,43 +1,14 @@
-{ pkgs, channels, ... }:
+{ pkgs, ... }:
 
 {
-  # Systemd services setup
-  systemd.packages = with pkgs; [
-    auto-cpufreq
-  ];
-
-  # Enable services
-  services = {
-    geoclue2.enable = true;
-    upower.enable = true;
-    dbus = {
-      enable = true;
-      packages = with pkgs; [
-        xfce.xfconf
-        gnome2.GConf
-      ];
-    };
-    mpd.enable = true;
-    tumbler.enable = true;
-    fwupd.enable = true;
-    auto-cpufreq.enable = true;
-  };
-
-  programs = {
-    direnv.enable = true;
-    fish.enable = true;
-    dconf.enable = true;
-    thunar.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [
-      pkgs.unstable.xdg-desktop-portal-wlr
-      # pkgs.unstable.xdg-desktop-portal-gtk
-    ];
-  };
+  
+  # Enable Services
+  services.geoclue2.enable = true;
+  programs.direnv.enable = true;
+  programs.fish.enable = true;
+  services.mpd.enable = true;
+  programs.thunar.enable = true;
+  services.tumbler.enable = true; 
 
   environment.systemPackages = with pkgs; [
     dbus
@@ -54,6 +25,7 @@
     imagemagick
     swappy
     ffmpeg_6-full
+    # wl-screenrec
     wf-recorder
     wl-clipboard
     cliphist
@@ -69,6 +41,7 @@
     avizo
     wlogout
     wpaperd
+    # swww
     gifsicle
   ];
 }

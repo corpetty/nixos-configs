@@ -7,6 +7,7 @@
     # disabled because of issues actually getting the hibernation to happen
     # ../custom/suspend-then-hibernate.nix
     ../roles/users.nix
+    ../roles/terminal-utils.nix
   ];
 
   # nix configuration
@@ -179,9 +180,7 @@
       ppfeaturemask = "0xffffffff";
     };
   };
+  
+  programs.fish.enable = true;
 
-  programs.fzf = {
-    keybindings = true;
-    fuzzyCompletion = true;
-  };
 }

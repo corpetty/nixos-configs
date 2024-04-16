@@ -10,6 +10,7 @@
       # include hardware specific configurations
       ./hardware-configuration.nix  
       ../../roles/hyprland.nix
+      ../../roles/services.nix
     ];
 
   # Bootloader.
@@ -38,6 +39,9 @@
   # enable network streaming of audio (export and import)
   hardware.pulseaudio.zeroconf.discovery.enable = true;
   hardware.pulseaudio.zeroconf.publish.enable = true;
+
+  
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
