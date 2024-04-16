@@ -1,94 +1,55 @@
-{ config, pkgs, ... }:
+# cattywampus system configuration
+
+{ config, pkgs, lib, hyprland, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports =
+    [ 
+      # include general system configurations
+      ../configuration.nix
+      # include hardware specific configurations
+      ./hardware-configuration.nix  
+      ../../roles/hyprland.nix
+      ../../roles/services.nix
+      ../../roles/nvidia.nix
+    ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.grub.enable = false;
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot = {
+
+  # kernel
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
+
+  # hostname
+  networking.hostName = "rooter"; # Define your hostname.
+
+  # enable gaming software
+  programs.steam.enable = true;
+  programs.gamemode = {
     enable = true;
-    configurationLimit = 10;
+    enableRenice = true;
+    settings = {
+      general = {
+        softrealtime = "auto";
+        renice = 10;
+      };
+    };
   };
 
-  # Resume
-  systemd.sleep.extraConfig = "HibernateMode=reboot";
+  # enable network streaming of audio (export and import)
+  hardware.pulseaudio.zeroconf.discovery.enable = true;
+  hardware.pulseaudio.zeroconf.publish.enable = true;
 
-  # Sensors
-  boot.kernelModules = [ "nct6775" "coretemp" "i2c-1" ];
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
-
-  networking = {
-    hostName = "bean";
-    domain = "enderverse";
-    # useDHCP = true;
-    networkmanager.enable = true;
-  };
-
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-  # Avoid difference when dual-booting Windows.
-  time.hardwareClockInLocalTime = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
   
 
-  # Video
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    nvidiaSettings = true;
-    modesetting.enable = true;
-    forceFullCompositionPipeline = true;
 
-  #  prime = {
-  #    sync.enable = true;
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "20.09"; # Did you read the comment?
 
-  #    intelBusId = "PCI:0:2:0";
-  #    nvidiaBusId = "PCI:0:1:1";
-  #  };
-  };
-
-  # Power Management
-  powerManagement.cpuFreqGovernor = "performance";
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "20.09";
-
-  systemd.coredump.enable = true;
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-24.8.6"
-    "electron-25.9.0"
-  ];
-
-  # allow video into loopback for OBS
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-
-  # enable virtualization
-  virtualisation.libvirtd.enable = true;
 }
