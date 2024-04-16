@@ -5,11 +5,12 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    # extraPackages = with pkgs; [
-    #   vaapiVdpau
-    #   libfdpau-va-gl
-    #   nvidia-vaaapi-driver
-    # ];
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiVdpau
+      libvdpau-va-gl
+      mesa.drivers
+    ];
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -50,6 +51,19 @@
   environment.systemPackages = with pkgs; [
     nvidia-docker
   ];
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
+  services.dbus.enable = true;
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 
   # # https://discourse.nixos.org/t/electron-apps-dont-open-on-nvidia-desktops/32505/4
   # environment.variables.VDPAU_DRIVER = "va_gl";

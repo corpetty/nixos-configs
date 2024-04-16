@@ -22,7 +22,7 @@
   boot.kernelPackages = pkgs.linuxPackages_6_8;
 
   # hostname
-  networking.hostName = "rooter"; # Define your hostname.
+  networking.hostName = "bean"; # Define your hostname.
 
   # enable gaming software
   programs.steam.enable = true;
@@ -41,7 +41,8 @@
   hardware.pulseaudio.zeroconf.discovery.enable = true;
   hardware.pulseaudio.zeroconf.publish.enable = true;
 
-  
+  # If using hyprland with nvidia
+  programs.hyprland.xwayland.enable = true;  
 
 
   # This value determines the NixOS release from which the default
