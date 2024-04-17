@@ -40,8 +40,8 @@
   };
 
   # enable network streaming of audio (export and import)
-  hardware.pulseaudio.zeroconf.discovery.enable = true;
-  hardware.pulseaudio.zeroconf.publish.enable = true;
+  # hardware.pulseaudio.zeroconf.discovery.enable = true;
+  # hardware.pulseaudio.zeroconf.publish.enable = true;
 
   # If using hyprland with nvidia
   programs.hyprland.xwayland.enable = true;  

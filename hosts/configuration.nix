@@ -54,6 +54,7 @@
   security.rtkit.enable = true; 
 
   # configure pipewire for a balance of low latency and no artifacts
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     audio.enable = true;
