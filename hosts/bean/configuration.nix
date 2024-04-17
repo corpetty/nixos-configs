@@ -12,6 +12,8 @@
       ../../roles/hyprland.nix
       ../../roles/services.nix
       ../../roles/nvidia.nix
+      ../../roles/display-manager.nix
+      ../../roles/gnome.nix
     ];
 
   # Bootloader.

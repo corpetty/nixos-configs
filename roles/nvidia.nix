@@ -15,7 +15,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
     # # Special config to load the latest (535 or 550) driver 
     # package = let 
     #   rcu_patch = pkgs.fetchpatch {
@@ -55,6 +55,7 @@
     enable = true;
     wlr.enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
   };
@@ -65,6 +66,8 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
+  
+ 
   # # https://discourse.nixos.org/t/electron-apps-dont-open-on-nvidia-desktops/32505/4
   # environment.variables.VDPAU_DRIVER = "va_gl";
   # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
