@@ -16,7 +16,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11_production;
     # # Special config to load the latest (535 or 550) driver 
     # package = let 
     #   rcu_patch = pkgs.fetchpatch {
