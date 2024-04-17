@@ -3,9 +3,8 @@
 {
   # Enable Hyprland
   programs.hyprland = {
-    enable = true;
+    enable = false;
     package = hyprland.packages.${pkgs.system}.default;
-    xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
