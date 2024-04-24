@@ -10,7 +10,7 @@
       # vaapiVdpau
       # libvdpau-va-gl
       # mesa.drivers
-      nvidia-vaapi-driver
+      # nvidia-vaapi-driver
     ];
   };
 

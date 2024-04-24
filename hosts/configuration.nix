@@ -117,7 +117,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-  #   extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
     config = {
       common.default = [ "wlr" "gtk" ];
@@ -175,13 +175,13 @@
   # software that I prefer to install at a system level rather than in home-manager
   programs.dconf.enable = true;
 
-  programs.corectrl = {
-    enable = true;
-    gpuOverclock = {
-      enable = true;
-      ppfeaturemask = "0xffffffff";
-    };
-  };
+  # programs.corectrl = {
+  #   enable = true;
+  #   gpuOverclock = {
+  #     enable = true;
+  #     ppfeaturemask = "0xffffffff";
+  #   };
+  # };
   
   programs.fish.enable = true;
 
