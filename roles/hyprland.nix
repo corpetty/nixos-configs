@@ -10,6 +10,10 @@
   environment.systemPackages = with pkgs; [
     alacritty
 
+    # screenshots
+    grim
+    slurp
+
     starship
     helix
   ];
