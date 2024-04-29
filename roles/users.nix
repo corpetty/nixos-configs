@@ -26,6 +26,7 @@
       spotify
       discord
       brave
+      chromium
       obsidian
       (callPackage ../pkgs/wavebox.nix {})
     ];

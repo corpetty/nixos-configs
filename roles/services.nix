@@ -36,6 +36,7 @@
     swaylock-effects
     swayidle
     playerctl
+    pavucontrol
     psmisc
     grim
     slurp

@@ -60,6 +60,8 @@
     audio.enable = true;
     wireplumber.enable = true;
     pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     jack.enable = true;
     extraConfig.pipewire."92-low-latency" = {
       context.properties = {
@@ -185,4 +187,14 @@
   
   programs.fish.enable = true;
 
+  # Allow running of appimages
+  boot.binfmt.registrations.appimage = {
+    wrapInterpreterInShell = false;
+    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+    recognitionType = "magic";
+    offset = 0;
+    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+    magicOrExtension = ''\x7fELF....AI\x02'';
+  };
+  
 }
