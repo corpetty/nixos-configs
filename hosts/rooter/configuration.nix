@@ -9,6 +9,7 @@
       ../configuration.nix
       # include hardware specific configurations
       ./hardware-configuration.nix  
+      ../../roles/display-manager.nix
       ../../roles/hyprland.nix
       ../../roles/services.nix
     ];
