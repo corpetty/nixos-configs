@@ -90,6 +90,8 @@
       };
     };
   };
+  # Add in Noisetorch for background noise control
+  programs.noisetorch.enable = true;
 
   # enable virtualization via virtd and qemu
   virtualisation.libvirtd.enable = true;
