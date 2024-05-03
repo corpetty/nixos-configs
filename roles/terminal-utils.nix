@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     upx
+    v4l-utils
     git
     lazygit
     license-generator
