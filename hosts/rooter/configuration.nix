@@ -14,6 +14,9 @@
       ../../roles/services.nix
     ];
 
+  # NixOS recommends using this on AMD platforms
+  services.power-profiles-daemon.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
