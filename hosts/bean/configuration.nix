@@ -14,6 +14,7 @@
       ../../roles/nvidia.nix
       ../../roles/display-manager.nix
       ../../roles/security.nix
+      ../../roles/obs.nix
     ];
 
   # Bootloader.
