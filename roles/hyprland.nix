@@ -13,6 +13,7 @@
     # screenshots
     grim
     slurp
+    swappy
 
     starship
     helix
