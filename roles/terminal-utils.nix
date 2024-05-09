@@ -5,6 +5,7 @@
     upx
     v4l-utils
     git
+    git-lfs
     lazygit
     license-generator
     git-ignore
