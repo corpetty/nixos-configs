@@ -20,11 +20,11 @@
 
 stdenv.mkDerivation rec {
   pname = "wavebox";
-  version = "10.124.23-2";
+  version = "10.124.30-2";
 
   src = fetchurl {
     url = "https://download.wavebox.app/stable/linux/tar/Wavebox_${version}.tar.gz";
-    sha256 = "sha256-8wLHYTo5BoVRiqaqIhhCc0M7k3IBAXRg3sjC20j5/SA=";
+    sha256 = "sha256-deVhiqN+4ETi17L7vrutgFfsgVhHvmvrtbnQCKTmb08=";
   };
 
   # don't remove runtime deps
