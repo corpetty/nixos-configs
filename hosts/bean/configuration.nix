@@ -40,6 +40,13 @@
       };
     };
   };
+  environment.systemPackages = with pkgs; [
+    lutris
+    corefonts
+    vulkan-tools
+    wineWowPackages.stableFull
+    winetricks
+  ];
 
   # enable network streaming of audio (export and import)
   # hardware.pulseaudio.zeroconf.discovery.enable = true;

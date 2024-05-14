@@ -5,6 +5,8 @@
   environment.variables.GTK_THEME = "Gruvbox-Dark";
   environment.variables.XCURSOR_THEME = "Grubvox-Dark";
   environment.variables.XCURSOR_SIZE = "20";
+  environment.variables.HYPRCURSOR_THEME = "Gruvbox-Dark";
+  environment.variables.HYPRCURSOR_SIZE = "20";
   console = {
     earlySetup = true;
     colors = [
@@ -45,7 +47,9 @@
 
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    # platformTheme = "qt5ct";
+    platformTheme = "gtk2";
+    style = "gtk2";
   };
   
 }
