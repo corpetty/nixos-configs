@@ -29,4 +29,7 @@
     starship
     helix
   ];
+
+  # Allow swaylock to unlock with password
+  security.pam.services.swaylock = {};
 }
