@@ -20,7 +20,7 @@
 
 stdenv.mkDerivation rec {
   pname = "wavebox";
-  version = "10.124.31-2";
+  version = "10.124.32-2";
 
   src = fetchurl {
     url = "https://download.wavebox.app/stable/linux/tar/Wavebox_${version}.tar.gz";
