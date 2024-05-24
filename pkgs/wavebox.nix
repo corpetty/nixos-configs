@@ -3,7 +3,7 @@
 }:
 
 let
-  inherit (pkgs) alsa-lib autoPatchelfHook fetchurl gtk3 gtk4 libnotify copyDesktopItems makeDesktopItem makeWrapper mesa nss lib libdrm qt5 stdenv udev xdg-utils xorg;
+  inherit (pkgs) alsa-lib autoPatchelfHook fetchurl gtk3 gtk4 libnotify copyDesktopItems makeDesktopItem makeWrapper mesa nss lib libdrm qt5 kdePackages stdenv udev xdg-utils xorg;
 in
 
 qt5.mkDerivation rec {
@@ -38,15 +38,9 @@ qt5.mkDerivation rec {
     mesa
     gtk4
     qt5.qtbase
-    libxcb
-    xcbutil
-    xcbutilwm
-    xcbutilimage
-    xcbutilkeysyms
-    xcbutilrenderutil
   ];
 
-  runtimeDependencies = [ (lib.getLib udev) libnotify gtk4 ];
+  runtimeDependencies = [ (lib.getLib udev) libnotify gtk4 kdePackages.qt5compat ];
 
   desktopItems = [
     (makeDesktopItem rec {

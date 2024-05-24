@@ -12,6 +12,7 @@
       # ../../roles/display-manager.nix
       ../../roles/hyprland.nix
       ../../roles/services.nix
+      ../../roles/display-manager.nix
     ];
 
   # NixOS recommends using this on AMD platforms
