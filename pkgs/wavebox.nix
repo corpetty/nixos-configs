@@ -1,30 +1,20 @@
-{ alsa-lib
-, autoPatchelfHook
-, fetchurl
-, gtk3
-, gtk4
-, libnotify
-, copyDesktopItems
-, makeDesktopItem
-, makeWrapper
-, mesa
-, nss
-, lib
-, libdrm
-, qt5
-, stdenv
-, udev
-, xdg-utils
-, xorg
+{
+  pkgs ? import <nixpkgs> { },
 }:
 
-stdenv.mkDerivation rec {
+let
+  inherit (pkgs) alsa-lib autoPatchelfHook fetchurl gtk3 gtk4 libnotify copyDesktopItems makeDesktopItem makeWrapper mesa nss lib libdrm qt5 stdenv udev xdg-utils xorg;
+in
+
+qt5.mkDerivation rec {
   pname = "wavebox";
   version = "10.124.32-2";
 
   src = fetchurl {
     url = "https://download.wavebox.app/stable/linux/tar/Wavebox_${version}.tar.gz";
-    sha256 = "sha256-m6hu7lbHA3I2lIhAfSXF6Vepa+V6h33R1gA6z3eDUrg=";
+     # sha256 = "sha256-yJ+J/81eIR816YUNL2b1cLWRi20jtDWL3LjnxMWIdhQ="; # 10.124.31
+     sha256 = "sha256-m6hu7lbHA3I2lIhAfSXF6Vepa+V6h33R1gA6z3eDUrg="; # 10.124.32
+    # sha256 = "sha256-RS1/zs/rFWsj29BrT8Mb2IXgy9brBsQypxfvnd7pKl0="; # 10.124.17-2
   };
 
   # don't remove runtime deps
@@ -48,6 +38,12 @@ stdenv.mkDerivation rec {
     mesa
     gtk4
     qt5.qtbase
+    libxcb
+    xcbutil
+    xcbutilwm
+    xcbutilimage
+    xcbutilkeysyms
+    xcbutilrenderutil
   ];
 
   runtimeDependencies = [ (lib.getLib udev) libnotify gtk4 ];

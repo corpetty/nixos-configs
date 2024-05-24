@@ -28,7 +28,7 @@
       brave
       chromium
       obsidian
-      (callPackage ../pkgs/wavebox.nix {})
+      (libsForQt5.callPackage ../pkgs/wavebox.nix {})
     ];
   };
 
