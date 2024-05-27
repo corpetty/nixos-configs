@@ -12,7 +12,7 @@
       # ../../roles/display-manager.nix
       ../../roles/hyprland.nix
       ../../roles/services.nix
-      ../../roles/display-manager.nix
+      # ../../roles/display-manager.nix
     ];
 
   # NixOS recommends using this on AMD platforms
@@ -21,12 +21,34 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
+    pname = "distro-grub-themes";
+    version = "3.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "AdisonCavani";
+      repo = "distro-grub-themes";
+      rev = "v3.1";
+      hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+    };
+    installPhase = "cp -r customize/nixos $out";
+  };
 
   # kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   # hostname
   networking.hostName = "rooter"; # Define your hostname.
+
+  # programs.regreet.enable = true;
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     initial_session = {
+  #       user = "petty";
+  #       command = "Hyprland";
+  #     };
+  #   };
+  # };
 
   # enable gaming software
   programs.steam.enable = true;

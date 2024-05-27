@@ -15,7 +15,7 @@
   };
   environment.systemPackages = with pkgs; [
     lutris
-    corefonts
+    # corefonts
     vulkan-tools
     wineWowPackages.stableFull
     winetricks
