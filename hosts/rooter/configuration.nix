@@ -12,7 +12,6 @@
       # ../../roles/display-manager.nix
       ../../roles/hyprland.nix
       ../../roles/services.nix
-      # ../../roles/display-manager.nix
     ];
 
   # NixOS recommends using this on AMD platforms
@@ -38,17 +37,6 @@
 
   # hostname
   networking.hostName = "rooter"; # Define your hostname.
-
-  # programs.regreet.enable = true;
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     initial_session = {
-  #       user = "petty";
-  #       command = "Hyprland";
-  #     };
-  #   };
-  # };
 
   # enable gaming software
   programs.steam.enable = true;

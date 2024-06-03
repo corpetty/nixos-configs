@@ -30,7 +30,7 @@
   };
 
   # Override packages
-  nixpkgs.config.packageOverrides = pkgs: { colloid-icon-theme = pkgs.colloid-icon-theme.override { colorVariants = [ "orange" ]; };
+  nixpkgs.config.packageOverrides = pkgs: { colloid-icon-theme = pkgs.colloid-icon-theme.override { colorVariants = [ "teal" ]; };
     # NOTE: When Discord needs upgrading, comment out the OpenASAR and run once, then uncomment it back
     discord = pkgs.discord.override {
       withOpenASAR = true;

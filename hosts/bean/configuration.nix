@@ -34,7 +34,6 @@
   # hardware.pulseaudio.zeroconf.publish.enable = true;
 
   # If using hyprland with nvidia
-  programs.hyprland.xwayland.enable = true;  
   environment.sessionVariables = {
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
       # WLR_RENDERER = "vulkan";
