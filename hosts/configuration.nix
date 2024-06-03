@@ -10,11 +10,8 @@
     ../roles/security.nix
     ../roles/terminal-utils.nix
     ../roles/gaming.nix
+    ../roles/nix-settings.nix
   ];
-
-  # nix configuration
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
 
   # create groups
   users.groups = {

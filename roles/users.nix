@@ -28,6 +28,7 @@
       brave
       chromium
       obsidian
+      vlc
       (qt6Packages.callPackage ../pkgs/wavebox.nix {})
     ];
   };

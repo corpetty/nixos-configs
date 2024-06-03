@@ -4,7 +4,6 @@
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
-    xserver = true;
     package = hyprland.packages.${pkgs.system}.hyprland;
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -32,6 +31,11 @@
     # editors
     starship
     helix
+
+    # clipboard
+    wl-clipboard
+    wofi
+    cliphist
   ];
 
   # Allow swaylock to unlock with password
