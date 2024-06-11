@@ -59,6 +59,15 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
+  # Enable prime for graphics offloading
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:0:1:0";
+  };
   
  
   # # https://discourse.nixos.org/t/electron-apps-dont-open-on-nvidia-desktops/32505/4

@@ -3,7 +3,7 @@
 {
   # Enable Gaming
   programs.steam.enable = true;
-  programes.gamemode = {
+  programs.gamemode = {
     enable = true;
     enableRenice = true;
     settings = {
@@ -18,7 +18,7 @@
     corefonts
     vulkan-tools
     wineWowPackages.stableFull
-    wineTricks
+    winetricks
   ];
 
 }

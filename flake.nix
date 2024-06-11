@@ -9,7 +9,7 @@
     hardware.url = "github:NixOS/nixos-hardware/master";
 
     hyprland = {
-      url = "github:hyprwm/hyprland";
+      url = "github:hyprwm/hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

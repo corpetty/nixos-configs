@@ -27,7 +27,7 @@
       discord
       brave
       chromium
-      obsidian
+      unstable.obsidian
       (callPackage ../pkgs/wavebox.nix {})
     ];
   };
