@@ -9,6 +9,7 @@
     ../roles/users.nix
     ../roles/security.nix
     ../roles/terminal-utils.nix
+    ../roles/gaming.nix
   ];
 
   # nix configuration
