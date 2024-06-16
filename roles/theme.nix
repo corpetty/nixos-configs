@@ -2,11 +2,11 @@
 
 {
   # Enable Theme
-  environment.variables.GTK_THEME = "Gruvbox-Dark";
-  environment.variables.XCURSOR_THEME = "Grubvox-Dark";
-  environment.variables.XCURSOR_SIZE = "20";
-  environment.variables.HYPRCURSOR_THEME = "Gruvbox-Dark";
-  environment.variables.HYPRCURSOR_SIZE = "20";
+  environment.variables.GTK_THEME = "Catppuccin-Macchiato-Standard-Teal-Dark";
+  environment.variables.XCURSOR_THEME = "Catppuccin-Macchiato-Teal";
+  environment.variables.XCURSOR_SIZE = "24";
+  environment.variables.HYPRCURSOR_THEME = "Catppuccin-Macchiato-Teal";
+  environment.variables.HYPRCURSOR_SIZE = "24";
   console = {
     earlySetup = true;
     colors = [
@@ -30,7 +30,13 @@
   };
 
   # Override packages
-  nixpkgs.config.packageOverrides = pkgs: { colloid-icon-theme = pkgs.colloid-icon-theme.override { colorVariants = [ "teal" ]; };
+  nixpkgs.config.packageOverrides = pkgs: { 
+    colloid-icon-theme = pkgs.colloid-icon-theme.override { colorVariants = [ "teal" ]; };
+    catppuccin-gtk = pkgs.catppuccin-gtk.override {
+      accents = [ "teal" ]; 
+      size = "standard";
+      variant = "macchiato";
+    };
     # NOTE: When Discord needs upgrading, comment out the OpenASAR and run once, then uncomment it back
     discord = pkgs.discord.override {
       withOpenASAR = true;
@@ -41,7 +47,9 @@
   environment.systemPackages = with pkgs; [
     numix-icon-theme-circle
     colloid-icon-theme
-    gruvbox-dark-gtk
+    catppuccin-gtk
+    catppuccin-kvantum
+    catppuccin-cursors.macchiatoTeal
     libsForQt5.qt5ct
   ];
 
