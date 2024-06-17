@@ -18,11 +18,13 @@
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
   services.auto-cpufreq.enable = true;
+  services.fstrim.enable = true;
 
   xdg.portal = {
     enable = true;
     wlr.enable = false;
     extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
   };
