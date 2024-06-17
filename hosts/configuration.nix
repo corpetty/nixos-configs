@@ -6,10 +6,12 @@
     # a custom service to hibernate after sleeping for a set period
     # disabled because of issues actually getting the hibernation to happen
     # ../custom/suspend-then-hibernate.nix
+    ../roles/bootloader.nix
     ../roles/users.nix
     ../roles/security.nix
     ../roles/terminal-utils.nix
     ../roles/gaming.nix
+    ../roles/fonts.nix
   ];
 
   # nix configuration
@@ -116,18 +118,6 @@
   environment.variables = {
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
   };
-
-
-  # enable portals for screensharing etc
-  # xdg.portal = {
-  #   enable = true;
-  #   wlr.enable = true;
-  #   extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-
-  #   config = {
-  #     common.default = [ "wlr" "gtk" ];
-  #   };
-  # };
 
   #
   # localization and language

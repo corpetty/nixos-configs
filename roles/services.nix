@@ -17,15 +17,15 @@
   programs.thunar.enable = true;
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
+  services.auto-cpufreq.enable = true;
 
-  # xdg.portal = {
-  #   enable = true;
-  #   wlr.enable = true;
-  #   extraPortals = [
-  #     pkgs.xdg-desktop-portal-wlr
-  #     pkgs.xdg-desktop-portal-gtk
-  #   ];
-  # };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     dbus
@@ -59,7 +59,6 @@
     avizo
     wlogout
     wpaperd
-    # swww
     gifsicle
   ];
 }
