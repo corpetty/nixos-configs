@@ -116,23 +116,6 @@
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
   };
 
-<<<<<<< HEAD
-
-  # enable portals for screensharing etc
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [ 
-      xdg-desktop-portal-gtk 
-    ];
-
-    config = {
-      common.default = [ "wlr" "gtk" ];
-    };
-  };
-
-=======
->>>>>>> 23941928b837f7c24ad8ba5851eb6d718fc9394d
   #
   # localization and language
   #

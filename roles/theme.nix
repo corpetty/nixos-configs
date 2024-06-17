@@ -50,10 +50,6 @@
     catppuccin-gtk
     catppuccin-kvantum
     catppuccin-cursors.macchiatoTeal
-<<<<<<< HEAD
-    libsForQt5.qt5ct
-=======
->>>>>>> 23941928b837f7c24ad8ba5851eb6d718fc9394d
   ];
 
   qt = {
