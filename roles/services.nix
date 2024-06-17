@@ -17,12 +17,12 @@
   programs.thunar.enable = true;
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
+  services.auto-cpufreq.enable = true;
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
   };
@@ -59,7 +59,6 @@
     avizo
     wlogout
     wpaperd
-    # swww
     gifsicle
   ];
 }

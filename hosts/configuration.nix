@@ -6,11 +6,13 @@
     # a custom service to hibernate after sleeping for a set period
     # disabled because of issues actually getting the hibernation to happen
     # ../custom/suspend-then-hibernate.nix
+    ../roles/bootloader.nix
     ../roles/users.nix
     ../roles/security.nix
     ../roles/terminal-utils.nix
     ../roles/gaming.nix
     ../roles/nix-settings.nix
+    ../roles/fonts.nix
   ];
 
   # create groups
@@ -114,6 +116,7 @@
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
   };
 
+<<<<<<< HEAD
 
   # enable portals for screensharing etc
   xdg.portal = {
@@ -128,6 +131,8 @@
     };
   };
 
+=======
+>>>>>>> 23941928b837f7c24ad8ba5851eb6d718fc9394d
   #
   # localization and language
   #

@@ -33,7 +33,7 @@
   nixpkgs.config.packageOverrides = pkgs: { 
     colloid-icon-theme = pkgs.colloid-icon-theme.override { colorVariants = [ "teal" ]; };
     catppuccin-gtk = pkgs.catppuccin-gtk.override {
-      accents = [ "teal" ]; 
+      accents = [ "teal" ]; # You can specify multiple accents here to output multiple themes 
       size = "standard";
       variant = "macchiato";
     };
@@ -50,12 +50,14 @@
     catppuccin-gtk
     catppuccin-kvantum
     catppuccin-cursors.macchiatoTeal
+<<<<<<< HEAD
     libsForQt5.qt5ct
+=======
+>>>>>>> 23941928b837f7c24ad8ba5851eb6d718fc9394d
   ];
 
   qt = {
     enable = true;
-    # platformTheme = "qt5ct";
     platformTheme = "gtk2";
     style = "gtk2";
   };
