@@ -21,7 +21,7 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -31,6 +31,7 @@
     dbus
     at-spi2-atk
     qt6.qtwayland
+    qt5.qtbase
     psi-notify
     poweralertd
     swaylock-effects
@@ -60,5 +61,6 @@
     wlogout
     wpaperd
     gifsicle
+    xorg.libxcb # fix for running wavebox
   ];
 }
