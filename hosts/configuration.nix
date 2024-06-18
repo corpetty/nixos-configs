@@ -9,10 +9,13 @@
     ../roles/bootloader.nix
     ../roles/users.nix
     ../roles/security.nix
+    ../roles/services.nix
+    ../roles/theme.nix
     ../roles/terminal-utils.nix
     ../roles/gaming.nix
     ../roles/nix-settings.nix
     ../roles/fonts.nix
+    ../roles/hyprland.nix
   ];
 
   # create groups

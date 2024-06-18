@@ -10,9 +10,6 @@
       # include hardware specific configurations
       ./hardware-configuration.nix  
       # ../../roles/display-manager.nix
-      ../../roles/hyprland.nix
-      ../../roles/services.nix
-      ../../roles/theme.nix
     ];
 
   environment.systemPackages = with pkgs; [

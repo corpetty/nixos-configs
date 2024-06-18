@@ -9,14 +9,10 @@
       ../configuration.nix
       # include hardware specific configurations
       ./hardware-configuration.nix  
-      ../../roles/hyprland.nix
-      ../../roles/services.nix
       ../../roles/nvidia.nix
       ../../roles/display-manager.nix
-      ../../roles/security.nix
       ../../roles/keycard.nix
       ../../roles/obs.nix
-      ../../roles/gaming.nix
     ];
 
   # Bootloader.
