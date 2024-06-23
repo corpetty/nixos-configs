@@ -10,6 +10,7 @@
       # include hardware specific configurations
       ./hardware-configuration.nix  
       # ../../roles/display-manager.nix
+      ../../roles/virtualization.nix
     ];
 
   environment.systemPackages = with pkgs; [
