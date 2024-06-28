@@ -8,13 +8,13 @@
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
 
-    hyprland = {
-      url = "github:hyprwm/hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland = {
+      # url = "github:hyprwm/hyprland?submodules=1";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = { self, nixpkgs, unstable, hyprland, hardware }:
+  outputs = { self, nixpkgs, unstable, hardware }:
     let
       overlay = final: prev: {
         unstable = import unstable { inherit (prev) system; config.allowUnfree = true; };
