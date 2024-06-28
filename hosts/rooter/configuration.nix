@@ -1,10 +1,12 @@
 # cattywampus system configuration
 
-{ config, pkgs, lib, hyprland, ... }:
+{ config, pkgs, lib, hyprland, channels, ... }:
 
 {
   imports =
     [ 
+      # include hardware-support
+      channels.hardware.nixosModules.framework-16-7040-amd
       # include general system configurations
       ../configuration.nix
       # include hardware specific configurations
