@@ -33,7 +33,7 @@
         value = nixpkgs.lib.nixosSystem {
           system = systemForHost host;
           specialArgs = {
-            inherit hyprland;
+            # inherit hyprland;
             channels = { inherit nixpkgs unstable hardware; }; 
           };
           modules = [ overlayModule ./hosts/${host}/configuration.nix ];
