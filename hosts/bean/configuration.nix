@@ -13,6 +13,7 @@
       ../../roles/display-manager.nix
       ../../roles/keycard.nix
       ../../roles/obs.nix
+      ../../roles/virtualization.nix
     ];
 
   # Bootloader.
