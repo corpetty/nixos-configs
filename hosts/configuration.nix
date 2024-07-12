@@ -189,5 +189,10 @@
     mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
+
+  # For Etcher
+  nixpkgs.config.permittedInsecurePackages = [
+                "electron-19.1.9"
+              ];
   
 }

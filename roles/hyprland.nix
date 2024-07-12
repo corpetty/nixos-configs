@@ -38,6 +38,9 @@
     wl-clipboard
     wofi
     cliphist
+    # fix for hyprland 0.41.2 clipboard sharing between Xwayland and wayland 
+    # (uses clipshare script in ~/.local/share/bin/ )
+    xclip clipnotify
   ];
 
   # Allow swaylock to unlock with password
