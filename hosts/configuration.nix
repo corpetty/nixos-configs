@@ -190,9 +190,5 @@
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
-  # For Etcher
-  nixpkgs.config.permittedInsecurePackages = [
-                "electron-19.1.9"
-              ];
-  
+ 
 }

@@ -30,7 +30,7 @@
       obsidian
       vlc
       (qt6Packages.callPackage ../pkgs/wavebox.nix {})
-      etcher
+      usbimager
     ];
   };
 
