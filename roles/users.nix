@@ -31,6 +31,7 @@
       vlc
       (qt6Packages.callPackage ../pkgs/wavebox.nix {})
       usbimager
+      gparted
     ];
   };
 

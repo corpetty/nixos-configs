@@ -40,18 +40,18 @@
 
       CLUTTER_BACKEND = "wayland";
 
-      # GDK_BACKEND="wayland,x11";
-      # QT_QPA_PLATFORM = "wayland;xcb";
-      # SDL_VIDEODRIVER = "wayland";
-      # OZONE_PLATFORM = "wayland";
-      # NIXOS_OZONE_WL = "1";
-      # MOZ_ENABLE_WAYLAND = "1";
-      # MOZ_DISABLE_RDD_SANDBOX = "1";
-      # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      GDK_BACKEND="wayland,x11";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      SDL_VIDEODRIVER = "wayland";
+      OZONE_PLATFORM = "wayland";
+      NIXOS_OZONE_WL = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_DISABLE_RDD_SANDBOX = "1";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
-      # XDG_CURRENT_DESKTOP = "Hyprland";
-      # XDG_SESSION_DESKTOP = "Hyprland";
-      # XDG_SESSION_TYPE = "wayland";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
   };
 
 
@@ -61,6 +61,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
