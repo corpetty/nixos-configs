@@ -38,10 +38,10 @@
       variant = "macchiato";
     };
     # NOTE: When Discord needs upgrading, comment out the OpenASAR and run once, then uncomment it back
-    discord = pkgs.discord.override {
-      withOpenASAR = true;
-      withTTS = true;
-    };
+    # discord = pkgs.discord.override {
+    #   withOpenASAR = true;
+    #   withTTS = true;
+    # };
   };
 
   environment.systemPackages = with pkgs; [

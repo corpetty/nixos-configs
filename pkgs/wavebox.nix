@@ -8,10 +8,10 @@ in
 
 qt5.mkDerivation rec {
   pname = "wavebox";
-  version = "10.126.14-2";
+  version = "10.126.22-2";
   src = fetchurl {
     url = "https://download.wavebox.app/stable/linux/tar/Wavebox_${version}.tar.gz";
-    sha256 = "sha256-yFw9su9zsy/EM3TYhG/1B2IpOoe68cCqoad00+ihyiE=";
+    sha256 = "sha256-lsbGpppqeNeqEvQN6zZ+a3DJ0OIJ6zUPemNRn0NwaVo=";
   };
 
   # don't remove runtime deps
