@@ -55,5 +55,7 @@
     cava
     figlet
     unzip
+    gnumake
+    graphviz
   ];
 }
