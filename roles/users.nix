@@ -32,11 +32,8 @@
       (qt6Packages.callPackage ../pkgs/wavebox.nix {})
       usbimager
       gparted
-<<<<<<< HEAD
       vscode
-=======
       zotero_7
->>>>>>> f4acb4b (added zotero)
     ];
   };
 
