@@ -27,6 +27,7 @@
       discord
       brave
       chromium
+      firefox
       obsidian
       vlc
       (qt6Packages.callPackage ../pkgs/wavebox.nix {})
