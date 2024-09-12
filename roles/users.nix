@@ -35,6 +35,8 @@
       gparted
       vscode
       zotero_7
+      appeditor
+      veracrypt
     ];
   };
 
