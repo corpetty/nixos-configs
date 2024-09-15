@@ -27,6 +27,7 @@
       discord
       brave
       chromium
+      firefox
       obsidian
       vlc
       (qt6Packages.callPackage ../pkgs/wavebox.nix {})
@@ -34,6 +35,8 @@
       gparted
       vscode
       zotero_7
+      appeditor
+      veracrypt
     ];
   };
 
