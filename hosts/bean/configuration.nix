@@ -21,7 +21,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # kernel
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  boot.kernelPackages = pkgs.unstable.linuxKernel.packages.linux_zen;
 
   # hostname
   networking.hostName = "bean"; # Define your hostname.
