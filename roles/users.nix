@@ -26,6 +26,7 @@
       spotify
       discord
       brave
+      element-desktop-wayland
       chromium
       firefox
       obsidian

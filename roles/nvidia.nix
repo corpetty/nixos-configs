@@ -1,4 +1,4 @@
-{ pkgs, config, libs, ... }:
+{ pkgs, config, libs, channels ... }:
 
 {
   hardware.opengl = {
@@ -16,7 +16,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11_beta;
+    package = channels.unstable.linuxKernel.packages.linux_zen.nvidia_x11;
     # # Special config to load the latest (535 or 550) driver 
     # package = let 
     #   rcu_patch = pkgs.fetchpatch {
