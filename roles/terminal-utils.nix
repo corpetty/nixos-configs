@@ -45,7 +45,7 @@
     gping
     viu
     tre-command
-    felix-fm
+    # felix-fm
     chafa
     feh
 
