@@ -3,7 +3,7 @@
 {
   hardware.opengl = {
     enable = true;
-    driSupport = true;
+    # driSupport = true;
     driSupport32Bit = true;
     extraPackages = with pkgs; [
       # intel-media-driver # LIBVA_DRIVER_NAME=iHD
@@ -16,7 +16,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11_beta;
+    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
     # # Special config to load the latest (535 or 550) driver 
     # package = let 
     #   rcu_patch = pkgs.fetchpatch {
