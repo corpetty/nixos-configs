@@ -56,7 +56,6 @@
   # reproduceable due to gpu driver shennanigans
   hardware.opengl = {
     enable = true;
-    driSupport.enable = true;
     extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl

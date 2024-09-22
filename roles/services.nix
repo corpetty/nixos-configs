@@ -17,7 +17,6 @@
   programs.thunar.enable = true;
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
-  services.auto-cpufreq.enable = true;
   services.fstrim.enable = true;
 
   xdg.portal = {
