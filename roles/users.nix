@@ -37,6 +37,8 @@
       vscode
       zotero_7
       appeditor
+      veracrypt
+      pinentry-gnome3
     ];
   };
 

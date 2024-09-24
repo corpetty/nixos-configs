@@ -9,6 +9,7 @@
     ../roles/bootloader.nix
     ../roles/users.nix
     ../roles/security.nix
+    ../roles/yubikey.nix
     ../roles/services.nix
     ../roles/theme.nix
     ../roles/terminal-utils.nix
@@ -102,14 +103,14 @@
   virtualisation.spiceUSBRedirection.enable = true;
 
   # enable ssh key management agent
-  programs.ssh = {
-    startAgent = true;
-    agentTimeout = "2h";
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
+  # programs.ssh = {
+    # startAgent = true;
+    # agentTimeout = "2h";
+    # extraConfig = ''
+      # AddKeysToAgent yes
+    # '';
 
-  };
+  # };
 
   # enable firmware and uefi updates
   services.fwupd.enable = true;
