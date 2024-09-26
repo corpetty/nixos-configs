@@ -97,6 +97,15 @@
     driversi686Linux.amdvlk
   ];
 
+  environment.sessionVariables = {
+    GDK_BACKEND = "wayland,x11";
+    GQ_QPA_PLATFORM = "wayland;xcb";
+    OZONE_PLATFORM = "wayland";
+
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
