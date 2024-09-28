@@ -5,26 +5,29 @@
   # virtualisation.containerd.enable = true;
 
   # Enable Docker
-  # virtualisation.docker.enable = true;
-  # virtualisation.docker.rootless = {
-  #   enable = true;
-  #   setSocketVariable = true;
-  # };
-  # users.extraGroups.docker.members = [ "xnm" ];
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    enableNvidia = true;
+    rootless = {
+      enable = true;
+    };
+  };
+  users.extraGroups.docker.members = [ "xnm" ];
 
   # Enable Podman
-  virtualisation = {
-    podman = {
-      enable = true;
+  # virtualisation = {
+    # podman = {
+      # enable = true;
 
       # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
+      # dockerCompat = true;
       # enableNvidia = true;
 
       # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
+      # defaultNetwork.settings.dns_enabled = true;
+    # };
+  # };
 
   # Enable Nvidia containers
   hardware.nvidia-container-toolkit.enable = true;
@@ -41,6 +44,8 @@
 
     podman-compose
     podman-tui
+
+    docker-compose
 
     # lazydocker
     # docker-credential-helpers

@@ -18,6 +18,6 @@
   ];
 
   /* Necessary for GPG Agent. */
-  enabled elsewhere
+  # enabled elsewhere
   # services.pcscd.enable = true;
 }

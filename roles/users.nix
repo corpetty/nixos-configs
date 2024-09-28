@@ -23,6 +23,7 @@
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
+      whatsapp-for-linux
       spotify
       discord
       brave
