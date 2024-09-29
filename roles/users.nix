@@ -23,6 +23,7 @@
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
+      whatsapp-for-linux
       spotify
       discord
       brave
@@ -37,6 +38,8 @@
       vscode
       zotero_7
       appeditor
+      veracrypt
+      pinentry-gnome3
     ];
   };
 
