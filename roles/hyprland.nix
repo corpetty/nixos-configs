@@ -10,13 +10,12 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  # Attempted fix for QT not seetting plugin path
+  # Attempted fix for QT not setting plugin path
   environment.variables.QT_QPA_PLATFORM_PLUGIN_PATH = "${pkgs.qt5.qtbase.bin}/lib/qt-${pkgs.qt5.qtbase.version}/plugins";
 
   environment.systemPackages = with pkgs; [
     hyprland
     pyprland
-    hyprpicker
     hyprcursor
     hyprlock
     hypridle
@@ -34,14 +33,30 @@
     starship
     helix
 
-    # clipboard
-    wl-clipboard
+    # clipboard extras
     wofi
     cliphist
     # fix for hyprland 0.41.2 clipboard sharing between Xwayland and wayland 
     # (uses clipshare script in ~/.local/share/bin/ )
     xclip clipnotify
     libnotify
+
+    hyprpanel
+    # hyprpanel requirements
+    libgtop
+    bluez
+    bluez-utils
+    grimblast
+    gpu-screen-recorder
+    hyprpicker
+    btop
+    networkmanager
+    matugen
+    wl-clipboard
+    swww
+    dart-sass
+    brightnessctl
+    gnome-bluetooth-3.0
   ];
 
   # Allow swaylock to unlock with password

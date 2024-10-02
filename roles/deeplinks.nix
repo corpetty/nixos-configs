@@ -1,37 +1,54 @@
 { config, pkgs, ... }:
 
+let
+  elementDesktopItem = pkgs.makeDesktopItem {
+    name = "element-desktop";
+    exec = "${pkgs.element-desktop}/bin/element-desktop %u";
+    icon = "element";
+    desktopName = "Element";
+    genericName = "Matrix Client";
+    comment = "A feature-rich client for Matrix.org";
+    categories = [ "Network" "InstantMessaging" "Chat" ];
+    mimeTypes = [ 
+      "x-scheme-handler/element"
+      "x-scheme-handler/riot"
+      "x-scheme-handler/matrix"
+    ];
+  };
+in
 {
+  
   # Ensure xdg-utils is installed
-  environment.systemPackages = [ pkgs.xdg-utils ];
+  environment.systemPackages = with pkgs; [ 
+    xdg-utils 
+    element-desktop
+    elementDesktopItem
+  ];
 
-  # Create desktop  enetry for applications
-  environment.ect."xdg/applications/element.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=Element
-    Exec=/etc/profiles/per-user/petty/bin/element-desktop %f
-    MimeType=x-scheme=handler/element;application/x-element;
+  # Set up URL handling for Element
+  system.activationScripts.elementUrlHandler = ''
+    # Set Element as the default handler for multiple URL schemes
+    ${pkgs.xdg-utils}/bin/xdg-mime default element-desktop.desktop x-scheme-handler/element
+    ${pkgs.xdg-utils}/bin/xdg-mime default element-desktop.desktop x-scheme-handler/riot
+    ${pkgs.xdg-utils}/bin/xdg-mime default element-desktop.desktop x-scheme-handler/matrix
+    
+    # Use xdg-settings to reinforce the association
+    ${pkgs.xdg-utils}/bin/xdg-settings set default-url-scheme-handler element element-desktop.desktop
+    ${pkgs.xdg-utils}/bin/xdg-settings set default-url-scheme-handler riot element-desktop.desktop
+    ${pkgs.xdg-utils}/bin/xdg-settings set default-url-scheme-handler matrix element-desktop.desktop
+    
+    # Update desktop database
+    ${pkgs.desktop-file-utils}/bin/update-desktop-database ~/.local/share/applications
+    ${pkgs.desktop-file-utils}/bin/update-desktop-database /usr/local/share/applications
+    ${pkgs.desktop-file-utils}/bin/update-desktop-database /usr/share/applications
   '';
 
-  # Register the MIME types
-  environment.etc."xdg/mime/packages/element-mime-types.xml".text = ''
-    <?xml version="1.0"?>
-    <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
-      <mime-type type="x-scheme-handler/element">
-        <comment>Element Desktop App</comment>
-      </mime-type>
-      <mime-type type="application/x-element">
-        <comment>Element File</comment>
-        <glob pattern="*.element"/>
-      </mime-type>
-    </mime-info>
-  '';
-
-  # Update MIME and desktop databases
-  system.activationScripts.mime = ''
-    ${pkgs.xdg-utils}/bin/xdg-mime default element.desktop x-scheme-handler/element
-    ${pkgs.xdg-utils}/bin/xdg-mime default element.desktop application/x-element
-    ${pkgs.xdg-utils}/bin/update-desktop-database
-    ${pkgs.xdg-utils}/bin/update-mime-database /usr/share/mime
-  '';
-};
+  # Optional: Add a script to manually trigger URL handling setup
+  # environment.systemPackages = with pkgs; [
+    # (writeScriptBin "setup-element-url-handler" ''
+     # !${stdenv.shell}
+      # ${config.system.activationScripts.elementUrlHandler.text}
+      # echo "Element URL handler setup completed."
+    # '')
+  # ];
+}
