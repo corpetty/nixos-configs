@@ -53,7 +53,7 @@
     wlrctl
     hyprpicker
     pyprland
-    waybar
+    # waybar
     rofi-wayland
     dunst
     avizo
