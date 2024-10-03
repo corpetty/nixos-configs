@@ -15,13 +15,13 @@
     # };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware }@inputs:
+  outputs = { self, nixpkgs, unstable, hardware, hyprpanel }:
     let
       overlay = final: prev: {
         unstable = import unstable { inherit (prev) system; config.allowUnfree = true; };
       };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
-      overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay inputs.hyprpanel.overlay ]; });
+      overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay hyprpanel.overlay ]; });
       # To generate host configurations for all hosts.
       hostnames = builtins.attrNames (builtins.readDir ./hosts);
       # Some hosts are ARM64

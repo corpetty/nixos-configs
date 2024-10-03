@@ -45,7 +45,7 @@
     # hyprpanel requirements
     libgtop
     bluez
-    bluez-utils
+    bluez-tools
     grimblast
     gpu-screen-recorder
     hyprpicker
@@ -56,7 +56,7 @@
     swww
     dart-sass
     brightnessctl
-    gnome-bluetooth-3.0
+    gnome-bluetooth
   ];
 
   # Allow swaylock to unlock with password

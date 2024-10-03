@@ -8,7 +8,7 @@ in
 
 qt5.mkDerivation rec {
   pname = "wavebox";
-  version = "10.129.27-2";
+  version = "10.129.29-2";
   src = fetchurl {
     url = "https://download.wavebox.app/stable/linux/tar/Wavebox_${version}.tar.gz";
     sha256 = "sha256-wqxg3WsoeifbE6hr3mdQZbyfjnSZNFxASKtxmRfxgIk=";

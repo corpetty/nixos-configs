@@ -41,7 +41,7 @@
     # };
 
     modesetting.enable = true;
-    nvidiaSettings = true;
+    nvidiaSettings = false;
     forceFullCompositionPipeline = true;
     open = false;
     powerManagement.enable = true;
