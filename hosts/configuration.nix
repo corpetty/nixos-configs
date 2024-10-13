@@ -16,7 +16,7 @@
     ../roles/gaming.nix
     ../roles/nix-settings.nix
     ../roles/fonts.nix
-    ../roles/hyprland.nix
+    # ../roles/hyprland.nix
     ../roles/deeplinks.nix
   ];
 

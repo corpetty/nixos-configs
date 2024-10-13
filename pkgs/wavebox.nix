@@ -11,7 +11,7 @@ qt5.mkDerivation rec {
   version = "10.129.29-2";
   src = fetchurl {
     url = "https://download.wavebox.app/stable/linux/tar/Wavebox_${version}.tar.gz";
-    sha256 = "sha256-wqxg3WsoeifbE6hr3mdQZbyfjnSZNFxASKtxmRfxgIk=";
+    sha256 = "sha256-WcKmAVly9LvnSqkp0Nf6jX8Zv3EeUXj0VwTldGonw3M=";
   };
 
   # don't remove runtime deps
