@@ -14,6 +14,7 @@
       ../../roles/keycard.nix
       ../../roles/obs.nix
       ../../roles/virtualization.nix
+      ../../roles/gnome.nix
     ];
 
   # Bootloader.

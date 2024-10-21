@@ -7,6 +7,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     unstable.url = "nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     # hyprland = {
       # url = "github:hyprwm/hyprland?submodules=1";
@@ -14,13 +15,13 @@
     # };
   };
 
-  outputs = { self, nixpkgs, unstable, hardware }:
+  outputs = { self, nixpkgs, unstable, hardware, hyprpanel }:
     let
       overlay = final: prev: {
         unstable = import unstable { inherit (prev) system; config.allowUnfree = true; };
       };
       # Overlays-module makes "pkgs.unstable" available in configuration.nix
-      overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
+      overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay hyprpanel.overlay ]; });
       # To generate host configurations for all hosts.
       hostnames = builtins.attrNames (builtins.readDir ./hosts);
       # Some hosts are ARM64

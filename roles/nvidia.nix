@@ -1,59 +1,89 @@
 { pkgs, config, libs, ... }:
 
 {
-  hardware.opengl = {
+  # OpenGL
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+    
+  hardware.graphics = {
     enable = true;
-    # driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
-      # intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      # vaapiVdpau
-      # libvdpau-va-gl
-      # mesa.drivers
-      # nvidia-vaapi-driver
+      intel-compute-runtime
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Chrome/Firefox)
+      vaapiVdpau
+      libvdpau-va-gl
+      mesa
+      nvidia-vaapi-driver
+      nv-codec-headers-12
     ];
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  ## Nvidia
+  boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_zen.nvidia_x11_vulkan_beta ];
   hardware.nvidia = {
-    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
-    # # Special config to load the latest (535 or 550) driver 
-    # package = let 
-    #   rcu_patch = pkgs.fetchpatch {
-    #   url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
-    #   hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
-    # };
-    # in config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #   version = "535.154.05";
-    #   sha256_64bit = "sha256-fpUGXKprgt6SYRDxSCemGXLrEsIA6GOinp+0eGbqqJg=";
-    #   sha256_aarch64 = "sha256-G0/GiObf/BZMkzzET8HQjdIcvCSqB1uhsinro2HLK9k=";
-    #   openSha256 = "sha256-wvRdHguGLxS0mR06P5Qi++pDJBCF8pJ8hr4T8O6TJIo=";
-    #   settingsSha256 = "sha256-9wqoDEWY4I7weWW05F4igj1Gj9wjHsREFMztfEmqm10=";
-    #   persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
+    package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11_vulkan_beta;
 
-    #   #version = "550.40.07";
-    #   #sha256_64bit = "sha256-KYk2xye37v7ZW7h+uNJM/u8fNf7KyGTZjiaU03dJpK0=";
-    #   #sha256_aarch64 = "sha256-AV7KgRXYaQGBFl7zuRcfnTGr8rS5n13nGUIe3mJTXb4=";
-    #   #openSha256 = "sha256-mRUTEWVsbjq+psVe+kAT6MjyZuLkG2yRDxCMvDJRL1I=";
-    #   #settingsSha256 = "sha256-c30AQa4g4a1EHmaEu1yc05oqY01y+IusbBuq+P6rMCs=";
-    #   #persistencedSha256 = "sha256-11tLSY8uUIl4X/roNnxf5yS2PQvHvoNjnd2CB67e870=";
-
-    #   patches = [ rcu_patch ];   
-    # };
-
+    ## Modesetting is required
     modesetting.enable = true;
+
+    # Enable Nvidia settings menu,
+    # accessible via `nvidia-settings`
     nvidiaSettings = true;
-    forceFullCompositionPipeline = true;
+
+    # may help with some screen tearing, turning off for base testing
+    # forceFullCompositionPipeline = true;
+    
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+    # Only available from driver 515.43.04+
     open = false;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+    # of just the bare essentials.
     powerManagement.enable = true;
-    powerManagement.finegrained = false;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    nvidia-docker
-  ];
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
+  
+  # From a post about getting vulkan to work, off for now
+  # environment.systemPackages = with pkgs; [
+  #   nvidia-docker
+  #   # Vulkan
+  #   gfxreconstruct
+  #   glslang
+  #   spirv-cross
+  #   spirv-headers
+  #   spirv-tools
+  #   vulkan-extension-layer
+  #   vulkan-headers
+  #   vulkan-loader
+  #   vulkan-tools
+  #   vulkan-tools-lunarg
+  #   vulkan-utility-libraries
+  #   vulkan-validation-layers
+  #   vkdisplayinfo
+  #   vkd3d
+  #   vkd3d-proton
+  #   vk-bootstrap
+  # ];
+
+  # I'm not sure why this is here
   services.dbus.enable = true;
 
+  # for Wayland
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -65,12 +95,11 @@
       enable = true;
       enableOffloadCmd = true;
     };
+    # sync.enable = true;
+    
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:0:1:0";
   };
+
   
- 
-  # # https://discourse.nixos.org/t/electron-apps-dont-open-on-nvidia-desktops/32505/4
-  # environment.variables.VDPAU_DRIVER = "va_gl";
-  # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
 }
