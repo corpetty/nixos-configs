@@ -54,18 +54,18 @@
 
   # have to let the system use my gpu even though it isn't technically
   # reproduceable due to gpu driver shennanigans
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-      mangohud
-      gamescope
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      mangohud
-      gamescope
-    ];
-  };
+  # hardware.opengl = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [
+  #     vaapiVdpau
+  #     libvdpau-va-gl
+  #     mangohud
+  #     gamescope
+  #     amdvlk
+  #   ];
+  #   extraPackages32 = with pkgs; [
+  #     mangohud
+  #     gamescope
+  #   ];
+  # };
 }
