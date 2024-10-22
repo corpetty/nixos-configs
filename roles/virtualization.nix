@@ -11,7 +11,7 @@
   
   virtualisation.docker = {
     enable = true;
-    enableNvidia = true;
+    # enableNvidia = true;
     # enableOnBoot = true;
     # rootless = {
       # enable = true;
@@ -31,17 +31,13 @@
 
   #     # Create a `docker` alias for podman, to use it as a drop-in replacement
   #     # dockerCompat = true;
-      enableNvidia = true;
 
   #     # Required for containers under podman-compose to be able to talk to each other.
   #     defaultNetwork.settings.dns_enabled = true;
     };
   };
 
-  # Enable Nvidia containers
-  hardware.nvidia-container-toolkit.enable = true;
-
-  environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
     # nerdctl
 
     # firecracker

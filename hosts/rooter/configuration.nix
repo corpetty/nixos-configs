@@ -88,14 +88,17 @@
   hardware.pulseaudio.zeroconf.discovery.enable = true;
   hardware.pulseaudio.zeroconf.publish.enable = true;
 
-  hardware.opengl.extraPackages = with pkgs; [
-    amdvlk
-    rocm-opencl-icd
-    rocm-opencl-runtime
-  ];
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      amdvlk
+      rocm-opencl-icd
+      rocm-opencl-runtime
+    ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];    
+  };
 
   environment.sessionVariables = {
     GDK_BACKEND = "wayland,x11";

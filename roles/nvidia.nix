@@ -101,5 +101,8 @@
     nvidiaBusId = "PCI:0:1:0";
   };
 
+  # For containers
+  virtualisation.docker.enableNvidia = true;
+  hardware.nvidia-container-toolkit.enable = true;
   
 }
